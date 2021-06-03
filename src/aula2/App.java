@@ -7,27 +7,25 @@ public class App {
 
     public static void main(String[] args) {
 
-//        Autenticavel autenticavel = new Usuario("joao@gmail.com",
-//                "João", "123456", "joao");
-//
-//        autenticavel.autenticar("joao", "321654");
+        List<String> minhaLista = new ArrayList<>();
 
-        List<String> nomes = new ArrayList<>();
+        //C - Adicionar, salvar
+        minhaLista.add("João");
+        minhaLista.add("Maria");
+        minhaLista.add(0, "Pedro");
+        minhaLista.add("Ana");
 
-        nomes.add("João");
-        nomes.add("Maria");
-        nomes.add("Pedro");
+        //R - ler
+        System.out.println(minhaLista);
+        System.out.println(minhaLista.get(2));
 
-        nomes.add(0,"Ana");
+        //U - Atualizar
+        minhaLista.set(1, "XXXXXXXX");
 
-        System.out.println(nomes);
+        //D - Deletar, remover...
+        minhaLista.remove("Ana");
 
-        nomes.remove("Maria");
-
-        nomes.set(1, "João da Silva");
-
-        System.out.println(nomes);
-
+        System.out.println(minhaLista);
 
     }
 
