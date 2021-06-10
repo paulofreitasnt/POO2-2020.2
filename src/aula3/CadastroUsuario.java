@@ -28,4 +28,27 @@ public class CadastroUsuario {
         return usuarios.remove(usuario);
     }
 
+    //Buscar um usuário pelo seu e-mail
+    public Usuario buscarPorEmail(String email){
+        for(Usuario u : usuarios){
+            if(u.getEmail().equals(email)){
+                return u;
+            }
+        }
+        return null;
+    }
+
+    //Atualizar a partir do e-mail
+    public boolean atualizar(String email, String nome){
+        for(int i=0; i<usuarios.size(); i++){
+            Usuario u = usuarios.get(i);
+            if(u.getEmail().equals(email)){
+                u.setNome(nome);
+                usuarios.set(i, u);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
