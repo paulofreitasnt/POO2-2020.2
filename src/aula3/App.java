@@ -1,27 +1,44 @@
 package aula3;
 
+import java.time.LocalDate;
+
 //Visão
 public class App {
 
     public static void main(String[] args) {
-        CadastroUsuario cadastroUsuario = new CadastroUsuario();
 
-        cadastroUsuario.salvar(new Usuario("joao@gmail.com", "João",
-                "123456"));
-        cadastroUsuario.salvar(new Usuario("maria@hotmail.com", "Maria",
-                "5654321"));
+        //Cria objetos do tipo produto
+        Produto produto1 = new Produto(1, "Arroz",
+                5, LocalDate.of(2021,12,1));
+        Produto produto2 = new Produto(2, "Feijão",
+                8, LocalDate.of(2022,2,18));
 
-        System.out.println(cadastroUsuario.getUsuarios());
+        //Inicializa o cadastro de produtos
+        CadastroProduto cadastroProduto = new CadastroProduto();
 
-//        System.out.println(cadastroUsuario.buscarPorEmail("joao2@gmail.com"));
 
-        if(cadastroUsuario.atualizar("joao@gmail.com", "João da Silva")){
-            System.out.println("Atualizado!");
+        //Salva alguns produtos
+        if(cadastroProduto.salvar(produto1)){
+            System.out.println("Salvo");
         }else{
-            System.out.println("Não atualizado!");
+            System.out.println("Falha ao salvar!");
         }
 
-        System.out.println(cadastroUsuario.getUsuarios());
+        if(cadastroProduto.salvar(produto2)){
+            System.out.println("Salvo");
+        }else{
+            System.out.println("Falha ao salvar!");
+        }
+
+        //Imprime todos os produtos
+        System.out.println(cadastroProduto.getProdutos());
+
+        //Remove um produto
+        System.out.println(cadastroProduto.deletar(new Produto(1, "Arroz",
+                5, LocalDate.of(2021,12,1))));
+
+        //Imprime todos os produtos
+        System.out.println(cadastroProduto.getProdutos());
 
     }
 
