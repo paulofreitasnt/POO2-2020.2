@@ -33,11 +33,32 @@ public class App {
         //Imprime todos os produtos
         System.out.println(cadastroProduto.getProdutos());
 
-        //Remove um produto
-        System.out.println(cadastroProduto.deletar(new Produto(1, "Arroz",
-                5, LocalDate.of(2021,12,1))));
+//        //Remove um produto
+//        System.out.println(cadastroProduto.deletar(new Produto(1, "Arroz",
+//                5, LocalDate.of(2021,12,1))));
+//
+//        //Imprime todos os produtos
+//        System.out.println(cadastroProduto.getProdutos());
 
-        //Imprime todos os produtos
+//        Produto p = cadastroProduto.buscarPorCodigo(1);
+//        if(p == null){
+//            System.out.println("Produto não encontrado!");
+//        }else{
+//            System.out.println(p.getDescricao());
+//        }
+
+        if(cadastroProduto.atualizarDescricao(1, "Arroz Parbolizado")){
+            System.out.println("Atualizado com sucesso!");
+        }else{
+            System.out.println("Produto não encontrado!");
+        }
+
+        if(cadastroProduto.atualizarPreco(1, 10)){
+            System.out.println("Atualizado!");
+        }else{
+            System.out.println("Produto não encontrado!");
+        }
+
         System.out.println(cadastroProduto.getProdutos());
 
     }
