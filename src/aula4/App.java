@@ -7,19 +7,14 @@ public class App {
     public static void main(String[] args) {
 
         try {
+
             CadastroUsuario cadastroUsuario = new CadastroUsuario();
 
-//            cadastroUsuario.salvar(new Usuario("maria@gmail.com", "Maria",
-//                    "654321"));
-//            cadastroUsuario.salvar(new Usuario("joao@gmail.com", "João",
-//                    "123456"));
-
-//            cadastroUsuario.deletar(new Usuario("joao@gmail.com", "João",
-//                    "123456"));
-
-//            cadastroUsuario.atualizar("maria@gmail.com", "Maria da Silva");
-
             System.out.println(cadastroUsuario.getUsuarios());
+
+            System.out.println(cadastroUsuario
+                    .buscarPorEmail("paulo.freitas.nt2@gmail.com"));
+
 
         } catch (IOException e) {
             e.printStackTrace();

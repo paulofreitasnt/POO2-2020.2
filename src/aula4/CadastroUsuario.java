@@ -9,26 +9,35 @@ public class CadastroUsuario {
     private File arquivo;
 
     public CadastroUsuario() throws IOException {
+
+        //Abre o link para o arquivo
         arquivo = new File("usuarios.txt");
 
+        //Verifica se o arquivo existe, caso não, cria ele.
         if(!arquivo.exists()){
             arquivo.createNewFile();
         }
     }
 
     public List<Usuario> getUsuarios() throws IOException, ClassNotFoundException {
+        //Verifica se o arquivo contém alguma coisa
         if(arquivo.length()!=0){
+            //Abre um fluxo de entrada com o arquivo
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(arquivo));
+            //Lê o objeto, faz o casting para lista e retorna
             return (List<Usuario>) in.readObject();
         }
+        //Retorna uma lista vazia caso o arquivo esteja vazio.
         return new ArrayList<>();
     }
 
     public boolean salvar(Usuario usuario) throws IOException, ClassNotFoundException {
+        //Recupera a lista do arquivo
         List<Usuario> usuarios = getUsuarios();
 
         if(usuarios.add(usuario)){
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo));
+            //Escreve no arquivo (por cima do que já está lá)
             out.writeObject(usuarios);
             return true;
         }else{
@@ -62,7 +71,17 @@ public class CadastroUsuario {
             }
         }
         return false;
+    }
 
+    public Usuario buscarPorEmail(String email) throws IOException, ClassNotFoundException {
+        List<Usuario> usuarios = getUsuarios();
+
+        for(Usuario u: usuarios){
+            if(u.getEmail().equals(email)){
+                return u;
+            }
+        }
+        return null;
     }
 
 }

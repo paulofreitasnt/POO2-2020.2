@@ -3,6 +3,7 @@ package aula4;
 import java.io.Serializable;
 import java.util.Objects;
 
+//Classe de modelo
 public class Usuario implements Serializable {
 
     private String email;
