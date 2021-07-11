@@ -48,22 +48,25 @@ public class CadastroUsuario {
     public boolean deletar(Usuario usuario) throws IOException, ClassNotFoundException {
         List<Usuario> usuarios = getUsuarios();
 
-        if(usuarios.remove(usuario)){
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo));
-            out.writeObject(usuarios);
-            return true;
-        }else{
-            return false;
+        for(Usuario u : usuarios){
+            if(u.getEmail().equals(usuario.getEmail())){
+                usuarios.remove(u);
+                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo));
+                out.writeObject(usuarios);
+                return true;
+            }
         }
+        return false;
     }
 
-    public boolean atualizar(String email, String novoNome) throws IOException, ClassNotFoundException {
+    public boolean atualizar(String email, String novoNome, String senha) throws IOException, ClassNotFoundException {
         List<Usuario> usuarios = getUsuarios();
 
         for(int i=0; i<usuarios.size(); i++){
             Usuario u = usuarios.get(i);
             if(u.getEmail().equals(email)){
                 u.setNome(novoNome);
+                u.setSenha(senha);
                 usuarios.set(i, u);
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arquivo));
                 out.writeObject(usuarios);
