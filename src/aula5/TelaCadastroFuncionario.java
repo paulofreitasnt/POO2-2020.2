@@ -48,8 +48,31 @@ public class TelaCadastroFuncionario extends JDialog {
     }
 
     private void onOK() {
-        // add your code here
-        dispose();
+
+        String cpf = campoCpf.getText();
+        String nome = campoNome.getText();
+        String senha = new String(campoSenha.getPassword());
+
+        char sexo;
+        if(masculinoRadioButton.isSelected()){
+            sexo = 'M';
+        }else{
+            sexo = 'F';
+        }
+
+        String profissao = (String) comboBoxProfissao.getSelectedItem();
+
+        Funcionario funcionario = new Funcionario(
+                cpf,
+                nome,
+                sexo,
+                profissao,
+                senha
+        );
+
+        JOptionPane.showMessageDialog(null, funcionario, "Saída dos dados",
+                JOptionPane.PLAIN_MESSAGE);
+
     }
 
     private void onCancel() {
