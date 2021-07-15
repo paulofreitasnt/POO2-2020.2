@@ -1,16 +1,20 @@
 package aula5;
 
+import java.time.LocalDate;
+
 public class Funcionario {
 
     private String cpf;
     private String nome;
+    private LocalDate nascimento;
     private char sexo;
     private String profissao;
     private String senha;
 
-    public Funcionario(String cpf, String nome, char sexo, String profissao, String senha) {
+    public Funcionario(String cpf, String nome, LocalDate nascimento, char sexo, String profissao, String senha) {
         this.cpf = cpf;
         this.nome = nome;
+        this.nascimento = nascimento;
         this.sexo = sexo;
         this.profissao = profissao;
         this.senha = senha;
@@ -30,6 +34,14 @@ public class Funcionario {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public LocalDate getNascimento() {
+        return nascimento;
+    }
+
+    public void setNascimento(LocalDate nascimento) {
+        this.nascimento = nascimento;
     }
 
     public char getSexo() {
@@ -61,6 +73,7 @@ public class Funcionario {
         return "Funcionario{" +
                 "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
+                ", nascimento=" + nascimento +
                 ", sexo=" + sexo +
                 ", profissao='" + profissao + '\'' +
                 ", senha='" + senha + '\'' +
